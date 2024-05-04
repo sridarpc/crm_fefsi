@@ -1,0 +1,262 @@
+{"properties": [
+  {
+    "name": "company.app.find-all-company",
+    "type": "java.lang.String",
+    "description": "A description for 'company.app.find-all-company'"
+  },
+  {
+    "name": "company.app.saveCompany",
+    "type": "java.lang.String",
+    "description": "A description for 'company.app.saveCompany'"
+  },
+  {
+    "name": "company.app.updateCompany",
+    "type": "java.lang.String",
+    "description": "A description for 'company.app.updateCompany'"
+  },
+  {
+    "name": "company.app.deleteCompany",
+    "type": "java.lang.String",
+    "description": "A description for 'company.app.deleteCompany'"
+  },
+  {
+    "name": "user.app.find-by-login-id",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.find-by-login-id'"
+  },
+  {
+    "name": "user.app.findById",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.findById'"
+  },
+  {
+    "name": "user.app.getRoles1",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.getRoles1'"
+  },
+  {
+    "name": "user.app.getRoles2",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.getRoles2'"
+  },
+  {
+    "name": "user.app.getRoles3",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.getRoles3'"
+  },
+  {
+    "name": "user.app.rootNameList1",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.rootNameList1'"
+  },
+  {
+    "name": "user.app.rootNameList2",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.rootNameList2'"
+  },
+  {
+    "name": "user.app.rootNameList3",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.rootNameList3'"
+  },
+  {
+    "name": "user.app.menuNameList1",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.menuNameList1'"
+  },
+  {
+    "name": "user.app.menuNameList2",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.menuNameList2'"
+  },
+  {
+    "name": "user.app.menuNameList3",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.menuNameList3'"
+  },
+  {
+    "name": "user.app.subNameList1",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.subNameList1'"
+  },
+  {
+    "name": "user.app.subNameList2",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.subNameList2'"
+  },
+  {
+    "name": "user.app.subNameList3",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.subNameList3'"
+  },
+  {
+    "name": "user.app.viewList1",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.viewList1'"
+  },
+  {
+    "name": "user.app.viewList2",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.viewList2'"
+  },
+  {
+    "name": "user.app.viewList3",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.viewList3'"
+  },
+  {
+    "name": "Address.app.employee-iD",
+    "type": "java.lang.String",
+    "description": "A description for 'Address.app.employee-iD'"
+  },
+  {
+    "name": "Address.app.findAddress",
+    "type": "java.lang.String",
+    "description": "A description for 'Address.app.findAddress'"
+  },
+  {
+    "name": "Address.app.saveAddress",
+    "type": "java.lang.String",
+    "description": "A description for 'Address.app.saveAddress'"
+  },
+  {
+    "name": "Address.app.updateAddress",
+    "type": "java.lang.String",
+    "description": "A description for 'Address.app.updateAddress'"
+  },
+  {
+    "name": "Address.app.companyID",
+    "type": "java.lang.String",
+    "description": "A description for 'Address.app.companyID'"
+  },
+  {
+    "name": "Contact.app.find-contact",
+    "type": "java.lang.String",
+    "description": "A description for 'Contact.app.find-contact'"
+  },
+  {
+    "name": "Contact.app.saveContact",
+    "type": "java.lang.String",
+    "description": "A description for 'Contact.app.saveContact'"
+  },
+  {
+    "name": "Contact.app.updateContact",
+    "type": "java.lang.String",
+    "description": "A description for 'Contact.app.updateContact'"
+  },
+  {
+    "name": "Bank.app.find-bank-dtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.find-bank-dtls'"
+  },
+  {
+    "name": "Bank.app.saveBankDtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.saveBankDtls'"
+  },
+  {
+    "name": "Bank.app.updateBankDtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.updateBankDtls'"
+  },
+  {
+    "name": "Tax.app.find-tax-dtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.find-tax-dtls'"
+  },
+  {
+    "name": "Tax.app.saveTaxDtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.saveTaxDtls'"
+  },
+  {
+    "name": "Tax.app.updateTaxDtls",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.updateTaxDtls'"
+  },
+  {
+    "name": "user.app.findUserByLoginId",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.findUserByLoginId'"
+  },
+  {
+    "name": "user.app.findUserById",
+    "type": "java.lang.String",
+    "description": "A description for 'user.app.findUserById'"
+  },
+  {
+    "name": "company.app.findCompanyById",
+    "type": "java.lang.String",
+    "description": "A description for 'company.app.findCompanyById'"
+  },
+  {
+    "name": "employee.app.find-all-employee",
+    "type": "java.lang.String",
+    "description": "A description for 'employee.app.find-all-employee'"
+  },
+  {
+    "name": "employee.app.saveEmployee",
+    "type": "java.lang.String",
+    "description": "A description for 'employee.app.saveEmployee'"
+  },
+  {
+    "name": "employee.app.updateEmployee",
+    "type": "java.lang.String",
+    "description": "A description for 'employee.app.updateEmployee'"
+  },
+  {
+    "name": "employee.app.deleteEmployee",
+    "type": "java.lang.String",
+    "description": "A description for 'employee.app.deleteEmployee'"
+  },
+  {
+    "name": "employee.app.findEmployeeById",
+    "type": "java.lang.String",
+    "description": "A description for 'employee.app.findEmployeeById'"
+  },
+  {
+    "name": "Bank.app.findBank",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.findBank'"
+  },
+  {
+    "name": "Bank.app.saveBank",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.saveBank'"
+  },
+  {
+    "name": "Bank.app.updateBank",
+    "type": "java.lang.String",
+    "description": "A description for 'Bank.app.updateBank'"
+  },
+  {
+    "name": "Tax.app.findTax",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.findTax'"
+  },
+  {
+    "name": "Tax.app.saveTax",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.saveTax'"
+  },
+  {
+    "name": "Tax.app.updateTax",
+    "type": "java.lang.String",
+    "description": "A description for 'Tax.app.updateTax'"
+  },
+  {
+    "name": "ingot.app.jwt-expiration-ms",
+    "type": "java.lang.String",
+    "description": "A description for 'ingot.app.jwt-expiration-ms'"
+  },
+  {
+    "name": "ingot.app.jwtRefreshExpirationMs",
+    "type": "java.lang.String",
+    "description": "A description for 'ingot.app.jwtRefreshExpirationMs'"
+  },
+  {
+    "name": "ingot.app.jwtSecret",
+    "type": "java.lang.String",
+    "description": "A description for 'ingot.app.jwtSecret'"
+  }
+]}

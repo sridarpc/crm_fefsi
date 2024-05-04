@@ -1,0 +1,120 @@
+.dataTables_filter {
+	display: none;
+}
+
+tbody>tr.selected, tbody>tr:hover {
+	background: #405189 !important;
+}
+
+tbody>tr.selected>td, tbody>tr:hover>td {
+	color: #ffffff !important;
+	border-right: none;
+}
+
+.dataTables_length>label {
+	display: inline-flex;
+	font-size: 40px;
+}
+
+.table>:not(caption)>*>* {
+	padding: 0.10rem 0.6rem !important;
+}
+
+th {
+	vertical-align: middle;
+	height: 30px;
+}
+
+.form-select-sm {
+	padding-top: 0.35rem !important;
+	padding-bottom: 0.45rem !important;
+	padding-left: 0.5rem !important;
+	font-size: large !important;
+	border-radius: 0.2rem !important;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+	font-weight: normal !important;
+	text-align: left !important;
+	white-space: nowrap !important;
+	font-size: small !important;
+	margin-bottom: 0px !important;
+	padding-top: 8px !important;
+}
+
+div.dataTables_wrapper div.dataTables_length select {
+	width: 75px !important;
+	font-size: medium !important;
+}
+
+.search-box {
+	padding-bottom: 5px !important;
+	padding-top: 9px !important;
+}
+
+.dataTables_length {
+	padding-top: 0px !important;
+}
+
+.table .sort::before {
+	top: 7px !important;
+}
+
+.table .sort::after {
+	top: 14px !important;
+}
+
+.requiredNovalidate {
+	border-color: rgba(0, 0, 0, 0.125) ! important;
+	background-image: none !important;
+}
+
+.btnDisplayNone {
+	display: none !important;
+}
+
+.page-title-box {
+	margin-bottom: 12px !important;
+}
+
+.customPadding {
+	padding-top: 0px !important;
+}
+
+.paddingLeftRemove {
+	padding-left: 0px !important;
+}
+
+.btnSmallPadd {
+	height: 40px !important;
+	margin-top: 8px !important;
+}
+
+#navbar-nav li.nav-item {
+	width: 100%;
+}
+
+.chosen-container {
+	width: 100% !important;
+}
+
+.selectTomValidations {
+	border-color: #f06548 !important;
+	padding-right: calc(1.5em + 1rem) !important;
+	background-repeat: no-repeat !important;
+	background-position: right calc(.375em + .25rem) center !important;
+	background-size: calc(.75em + .5rem) calc(.75em + .5rem) !important;
+}
+
+.selectTomSuccess {
+	border-color: #0ab39c;
+	padding-right: calc(1.5em + 1rem);
+	background-repeat: no-repeat;
+	background-position: right calc(.375em + .25rem) center;
+	background-size: calc(.75em + .5rem) calc(.75em + .5rem);
+}
+
+.ts-control {
+	height: 30px !important;
+	padding-top: 5px !important;
+}

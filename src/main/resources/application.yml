@@ -1,0 +1,29 @@
+ingot:
+  app:
+    jwtExpirationMs: 60000000
+    jwtRefreshExpirationMs: 120000
+    jwtSecret: ingotSecretKey
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/pawn?allowPublicKeyRetrieval=true&useSSL=false
+    username: root
+    password: admin
+    
+  mvc:
+    view:
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+      
+  profiles:
+    active: 
+    
+  main:
+    allow-circular-references: true
+     
+server:
+   port: 8899
+   servlet:
+    context-path: /fefsi
+
+
+ 
