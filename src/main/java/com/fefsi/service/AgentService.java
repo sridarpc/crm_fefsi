@@ -9,49 +9,49 @@ import org.springframework.stereotype.Service;
 import com.fefsi.exception.ProductBusinessException;
 import com.fefsi.models.CommonRequest;
 import com.fefsi.models.CustomDTO;
-import com.fefsi.models.Customer;
+import com.fefsi.models.Agent;
 import com.fefsi.models.PageRequest;
-import com.fefsi.repository.CustomerRepository;
+import com.fefsi.repository.AgentRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class CustomerService {
+public class AgentService {
 
     @Autowired
-    private CustomerRepository customerRepository;
+    private AgentRepository agentRepository;
 
-    public int saveOrUpdate(Customer Customer) {
+    public int saveOrUpdate(Agent agent) {
         int status = 0;
         try {
             log.info("Inside save");
-            status = customerRepository.saveOrUpdateCustomer(Customer);
+            status = agentRepository.saveOrUpdateAgent(agent);
         } catch (DataIntegrityViolationException e) {
-            throw new ProductBusinessException("Customer code already exist " + e.getMessage());
+            throw new ProductBusinessException("Agent code already exist " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ProductBusinessException("Exception occurred while save Or Update the Customer");
+            throw new ProductBusinessException("Exception occurred while save Or Update the Agent");
         }
         return status;
     }
 
-    public Customer findById(int id) {
-        Customer customer = customerRepository.findCustomerById(id);
+    public Agent findById(int id) {
+        Agent customer = agentRepository.findAgentById(id);
         return customer;
     }
 
     public int deleteById(int id) {
-        return customerRepository.deleteCustomer(id);
+        return agentRepository.deleteAgent(id);
     }
 
-    public CustomDTO<Customer> findAll(PageRequest pageable) {
+    public CustomDTO<Agent> findAll(PageRequest pageable) {
         try {
-            List<Customer> Customer = customerRepository.findAll(pageable);
-            CustomDTO<Customer> customDTO = new CustomDTO<>();
-            customDTO.setData(Customer);
-            customDTO.setRecordsFiltered(customerRepository.count());
-            customDTO.setRecordsTotal(Customer.size());
+            List<Agent> Agent = agentRepository.findAll(pageable);
+            CustomDTO<Agent> customDTO = new CustomDTO<>();
+            customDTO.setData(Agent);
+            customDTO.setRecordsFiltered(agentRepository.count());
+            customDTO.setRecordsTotal(Agent.size());
             customDTO.setDraw(pageable.getDraw());
             return customDTO;
         } catch (Exception e) {
@@ -59,9 +59,9 @@ public class CustomerService {
         }
     }
 
-    public List<Customer> findByList() {
+    public List<Agent> findByList() {
         try {
-            return customerRepository.findByList();
+            return agentRepository.findByList();
         } catch (Exception e) {
             throw new ProductBusinessException("findByList Getting Exception" + e.getMessage());
         }
@@ -69,15 +69,15 @@ public class CustomerService {
 
     public String getId() {
         try {
-            return customerRepository.getId();
+            return agentRepository.getId();
         } catch (Exception e) {
             throw new ProductBusinessException("getId Getting Exception" + e.getMessage());
         }
     }
 
-    public List<Customer> findBySurNameList(CommonRequest commonRequest) {
+    public List<Agent> findBySurNameList(CommonRequest commonRequest) {
         try {
-            return customerRepository.findBySurNameList(commonRequest);
+            return agentRepository.findBySurNameList(commonRequest);
         } catch (Exception e) {
             throw new ProductBusinessException("getId Getting Exception" + e.getMessage());
         }

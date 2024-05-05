@@ -12,7 +12,7 @@ public abstract class UserAudit extends DateAudit {
 
     private Integer comId;
 
-    private int status;
+    private String status;
 
     private String entBy;
 

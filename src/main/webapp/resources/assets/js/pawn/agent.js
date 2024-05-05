@@ -1,33 +1,33 @@
 $(document).ready(function() {
-	loadCustomerList();
-	getCustomerId();
+	loadAgentList();
+	getAgentId();
 	//Tabpane name changes code
 	$("#steparrow-gen-info-tab, #steparrow-description-info-tab").click(function() {
 		$("#nav-item-steparrow-tab").css("display", "none");
-		$('#steparrow-description-info-tab').text('Add Customer');
+		$('#steparrow-description-info-tab').text('Add Agent');
 		var tabName = $(this).text();
 		$("#tabName").text(tabName);
-		if (tabName == "Add Customer" || tabName == "Edit Customer") {
+		if (tabName == "Add Agent" || tabName == "Edit Agent") {
 			$("#nav-item-steparrow-tab").css("display", "");
 			$("#code").focus();
-			resetCustomer();
-			getCustomerId();
+			resetAgent();
+			getAgentId();
 		}
 	});
 
 	$("#save").click(function() {
-		addCustomer();
+		addAgent();
 	});
 
-	$("#clearCustomer").click(function() {
-		resetCustomer();
+	$("#clearAgent").click(function() {
+		resetAgent();
 	});
 
 	//Key Press Event
 	$('body').keydown(function(e) {
 		switch (e.which) {
 			case 112:
-				resetCustomer();
+				resetAgent();
 				break;
 			case 113:
 				$('#save').trigger('click');
@@ -42,75 +42,75 @@ $(document).ready(function() {
 });
 
 
-function addCustomer() {
-	var customerForm = $("#addCustomer");
+function addAgent() {
+	var agentForm = $("#addAgent");
 	var isValid = true;
-	customerForm.find(':input').each(function() {
+	agentForm.find(':input').each(function() {
 		if (!this.checkValidity()) {
 			isValid = false;
 		}
 	});
 
 	if (isValid) {
-		var customerParam = {};
+		var agentParam = {};
 
-		customerParam["customerId"] = $('#customerId').val();
-		customerParam["customerName"] = $('#customerName').val();
-		customerParam["surDetails"] = $('#surDetails').val();
-		customerParam["surName"] = $('#surName').val();
-		customerParam["customerType"] = $('#customerType').val();
-		customerParam["party"] = $('#party').val();
-		customerParam["religion"] = $('#religion').val();
-		customerParam["community"] = $('#community').val();
-		customerParam["doorNo"] = $('#doorNo').val();
-		customerParam["streetName"] = $('#streetName').val();
-		customerParam["area"] = $('#area').val();
-		customerParam["taluk"] = $('#taluk').val();
-		customerParam["postal"] = $('#postal').val();
-		customerParam["district"] = $('#district').val();
-		customerParam["state"] = $('#state').val();
-		customerParam["pincode"] = $('#pincode').val();
-		customerParam["mobileNo"] = $('#mobileNo').val();
-		customerParam["emailId"] = $('#emailId').val();
-		customerParam["website"] = $('#website').val();
-		customerParam["stdcode"] = $('#stdcode').val();
-		customerParam["landlineNo"] = $('#landlineNo').val();
-		customerParam["birthday"] = $('#birthday').val();
-		customerParam["anniversary"] = $('#anniversary').val();
-		customerParam["proofName"] = $('#proofName').val();
-		customerParam["proofDetails"] = $('#proofDetails').val();
-		customerParam["proofAttached"] = $('#proofAttached').val();
-		customerParam["relation"] = $('#relation').val();
-		customerParam["relationshipCustomerId"] = $('#relationshipCustomerId').val();
-		customerParam["photo1"] = $('#photo1').val();
-		customerParam["photo2"] = $('#photo2').val();
-		customerParam["photo3"] = $('#photo3').val();
-		customerParam["rightThumb"] = $('#rightThumb').val();
-		customerParam["rightIndexFinger"] = $('#rightIndexFinger').val();
-		customerParam["rightMiddleFinger"] = $('#rightMiddleFinger').val();
-		customerParam["rightRingFinger"] = $('#rightRingFinger').val();
-		customerParam["rightLittleFinger"] = $('#rightLittleFinger').val();
-		customerParam["leftThumb"] = $('#leftThumb').val();
-		customerParam["leftIndexFinger"] = $('#leftIndexFinger').val();
-		customerParam["leftMiddleFinger"] = $('#leftMiddleFinger').val();
-		customerParam["leftRingFinger"] = $('#leftRingFinger').val();
-		customerParam["leftLittleFinger"] = $('#leftLittleFinger').val();
-		customerParam["feedback"] = $('#feedback').val();
-		customerParam["status"] = $('#customerstatus').val();
+		agentParam["agentId"] = $('#agentId').val();
+		agentParam["agentName"] = $('#agentName').val();
+		agentParam["surDetails"] = $('#surDetails').val();
+		agentParam["surName"] = $('#surName').val();
+		agentParam["agentType"] = $('#agentType').val();
+		agentParam["party"] = $('#party').val();
+		agentParam["religion"] = $('#religion').val();
+		agentParam["community"] = $('#community').val();
+		agentParam["doorNo"] = $('#doorNo').val();
+		agentParam["streetName"] = $('#streetName').val();
+		agentParam["area"] = $('#area').val();
+		agentParam["taluk"] = $('#taluk').val();
+		agentParam["postal"] = $('#postal').val();
+		agentParam["district"] = $('#district').val();
+		agentParam["state"] = $('#state').val();
+		agentParam["pincode"] = $('#pincode').val();
+		agentParam["mobileNo"] = $('#mobileNo').val();
+		agentParam["emailId"] = $('#emailId').val();
+		agentParam["website"] = $('#website').val();
+		agentParam["stdcode"] = $('#stdcode').val();
+		agentParam["landlineNo"] = $('#landlineNo').val();
+		agentParam["birthday"] = $('#birthday').val();
+		agentParam["anniversary"] = $('#anniversary').val();
+		agentParam["proofName"] = $('#proofName').val();
+		agentParam["proofDetails"] = $('#proofDetails').val();
+		agentParam["proofAttached"] = $('#proofAttached').val();
+		agentParam["relation"] = $('#relation').val();
+		agentParam["relationshipAgentId"] = $('#relationshipAgentId').val();
+		agentParam["photo1"] = $('#photo1').val();
+		agentParam["photo2"] = $('#photo2').val();
+		agentParam["photo3"] = $('#photo3').val();
+		agentParam["rightThumb"] = $('#rightThumb').val();
+		agentParam["rightIndexFinger"] = $('#rightIndexFinger').val();
+		agentParam["rightMiddleFinger"] = $('#rightMiddleFinger').val();
+		agentParam["rightRingFinger"] = $('#rightRingFinger').val();
+		agentParam["rightLittleFinger"] = $('#rightLittleFinger').val();
+		agentParam["leftThumb"] = $('#leftThumb').val();
+		agentParam["leftIndexFinger"] = $('#leftIndexFinger').val();
+		agentParam["leftMiddleFinger"] = $('#leftMiddleFinger').val();
+		agentParam["leftRingFinger"] = $('#leftRingFinger').val();
+		agentParam["leftLittleFinger"] = $('#leftLittleFinger').val();
+		agentParam["feedback"] = $('#feedback').val();
+		agentParam["status"] = $('#agentstatus').val();
 
 		$.ajax({
 			type: "POST",
-			url: "customer/saveOrUpdate",
-			data: JSON.stringify(customerParam),
+			url: "agent/saveOrUpdate",
+			data: JSON.stringify(agentParam),
 			contentType: "application/json",
 			success: function(response) {
 				$('#steparrow-gen-info-tab').trigger('click');
-				if ($('#customerId').val() != null && $('#customerId').val() != undefined && $('#customerId').val() != '') {
+				if ($('#agentId').val() != null && $('#agentId').val() != undefined && $('#agentId').val() != '') {
 					$("#updateToast").trigger('click');
 				} else {
 					$("#submitToast").trigger('click');
 				}
-				resetCustomer();
+				resetAgent();
 			},
 			error: function(xhr, status, error) {
 				$("#errorToast").trigger('click');
@@ -119,14 +119,14 @@ function addCustomer() {
 	}
 }
 
-function getCustomerId() {
+function getAgentId() {
 	$.ajax({
-		url: 'customer/getCustomerId',
+		url: 'agent/getAgentId',
 		type: 'get',
 		success: function(data) {
 			if (data.statusCode == 200) {
 				console.log(data.response);
-				$('#customerId').val(data.response);
+				$('#agentId').val(data.response);
 			}
 		},
 		error: function(error) {
@@ -135,19 +135,19 @@ function getCustomerId() {
 	});
 }
 
-function resetCustomer() {
-	var form = $('#addCustomer')[0];
+function resetAgent() {
+	var form = $('#addAgent')[0];
 	$(form).removeClass('was-validated');
 	form.reset();
 }
 
-function findCustomerId(e) {
+function findAgentId(e) {
 	$.ajax({
-		url: 'customer/' + e.customerId,
+		url: 'agent/' + e.agentId,
 		type: 'get',
 		success: function(data) {
 			if (data.statusCode == 200) {
-				customerDetails(data.response);
+				agentDetails(data.response);
 				console.log(data.response);
 			}
 		},
@@ -157,9 +157,9 @@ function findCustomerId(e) {
 	});
 }
 
-function deleteByCustomerId(e) {
+function deleteByAgentId(e) {
 	$.ajax({
-		url: 'customer/' + e.customerId,
+		url: 'agent/' + e.agentId,
 		type: 'delete',
 		success: function(data) {
 			if (data.statusCode == 200) {
@@ -174,13 +174,13 @@ function deleteByCustomerId(e) {
 	});
 }
 
-function customerDetails(data) {
+function agentDetails(data) {
 
-	$('#customerId').val(data.customerId);
-	$('#customerName').val(data.customerName);
+	$('#agentId').val(data.agentId);
+	$('#agentName').val(data.agentName);
 	$('#surDetails').val(data.surDetails);
 	$('#surName').val(data.surName);
-	$('#customerType').val(data.customerType);
+	$('#agentType').val(data.agentType);
 	$('#party').val(data.party);
 	$('#religion').val(data.religion);
 	$('#community').val(data.community);
@@ -203,7 +203,7 @@ function customerDetails(data) {
 	$('#proofDetails').val(data.proofDetails);
 	$('#proofAttached').val(data.proofAttached);
 	$('#relation').val(data.relation);
-	$('#relationshipCustomerId').val(data.relationshipCustomerId);
+	$('#relationshipAgentId').val(data.relationshipAgentId);
 	$('#rightThumb').val(data.rightThumb);
 	$('#rightIndexFinger').val(data.rightIndexFinger);
 	$('#rightMiddleFinger').val(data.rightMiddleFinger);
@@ -215,18 +215,18 @@ function customerDetails(data) {
 	$('#leftRingFinger').val(data.leftRingFinger);
 	$('#leftLittleFinger').val(data.leftLittleFinger);
 	$('#feedback').val(data.feedback);
-	$('#customerstatus').val(data.status);
+	$('#agentstatus').val(data.status);
 
 }
 
-function loadCustomerList() {
-	var customerTables = $('#customerTable').DataTable({
+function loadAgentList() {
+	var agentTables = $('#agentTable').DataTable({
 		"processing": true,
 		"serverSide": true,
 		"lengthChange": false,
 		"iDisplayLength": 25,
 		"ajax": {
-			url: "customer/findAll",
+			url: "agent/findAll",
 		},
 		select: {
 			style: 'single'
@@ -237,9 +237,9 @@ function loadCustomerList() {
 		rowId: 'id',
 		"columns": [
 			{ "data": "serialNumber" },
-			{ "data": "customerId" },
-			{ "data": "customerName" },
-			{ "data": "customerType" },
+			{ "data": "agentId" },
+			{ "data": "agentName" },
+			{ "data": "agentType" },
 			{ "data": "mobileNo" },
 			{ "data": "postal" },
 			{ "data": "status" },
@@ -276,53 +276,53 @@ function loadCustomerList() {
 	});
 
 	// Handle Hide the columns
-	customerTables.columns(1).visible(false);
+	agentTables.columns(1).visible(false);
 
 	// Handle event when cell gains focus
-	$('#customerTable').on('key-focus.dt', function(e, datatable, cell) {
+	$('#agentTable').on('key-focus.dt', function(e, datatable, cell) {
 		var rowIndex = cell.index().row;
-		var data = customerTables.row(rowIndex).data();
-		var tr = $("#customerTable > tbody > tr#" + data.id);
+		var data = agentTables.row(rowIndex).data();
+		var tr = $("#agentTable > tbody > tr#" + data.id);
 		tr.addClass('selected');
 	});
 
 
 	// Handle event when cell looses focus
-	$('#customerTable').on('key-blur.dt', function(e, datatable, cell) {
+	$('#agentTable').on('key-blur.dt', function(e, datatable, cell) {
 		var rowIndex = cell.index().row;
-		var data = customerTables.row(rowIndex).data();
-		var tr = $("#customerTable > tbody > tr");
+		var data = agentTables.row(rowIndex).data();
+		var tr = $("#agentTable > tbody > tr");
 		tr.removeClass('selected');
 	});
 
 	// Handle key event that hasn't been handled by KeyTable
-	$('#customerTable').on('key.dt', function(e, datatable, key, cell, originalEvent) {
+	$('#agentTable').on('key.dt', function(e, datatable, key, cell, originalEvent) {
 		if (key === 13) { // ENTER
 			var data = datatable.row(cell.index().row).data();
 		} else if (key === 119) { // F8
 			var data = datatable.row(cell.index().row).data();
-			editCustomer(e, data);
+			editAgent(e, data);
 		} else if (key === 120) { // F9
 			showDeletePopup(e, datatable, cell);
 		}
 	});
 
-	$('#customerTable').on('init.dt', function(event, datatable, cell) {
+	$('#agentTable').on('init.dt', function(event, datatable, cell) {
 		console.log('Table initialisation complete: ' + new Date().getTime());
-		$('#customerTable tbody').on('click', '.edit-icon', function(e, datatable, cell) {
+		$('#agentTable tbody').on('click', '.edit-icon', function(e, datatable, cell) {
 			console.log('edit-icon', e, 'dt=', datatable, 'cell=', cell);
 			var rowIndex = this.parentElement.parentElement._DT_RowIndex;
-			var data = customerTables.row(rowIndex).data();
-			editCustomer(e, data);
+			var data = agentTables.row(rowIndex).data();
+			editAgent(e, data);
 		});
 
-		$('#customerTable tbody').on('click', '.delete-icon', showDeletePopup);
+		$('#agentTable tbody').on('click', '.delete-icon', showDeletePopup);
 	})
 
 	var showDeletePopup = function(e, datatable, cell) {
 		console.log('show deletepopup-icon', e, 'dt=', datatable, 'cell=', cell);
 		var rowIndex = e.type === "click" ? this.parentElement.parentElement._DT_RowIndex : cell.index().row;
-		var data = customerTables.row(rowIndex).data();
+		var data = agentTables.row(rowIndex).data();
 		Swal.fire({
 			title: "Are you sure?",
 			text: "You won't be able to revert this!",
@@ -336,27 +336,27 @@ function loadCustomerList() {
 			backdrop: true,
 		}).then(function(result) {
 			if (result.value) {
-				deleteCustomer(data);
+				deleteAgent(data);
 			}
 		});
 
 	};
 
-	var editCustomer = function(e, data) {
+	var editAgent = function(e, data) {
 		$('#steparrow-description-info-tab').trigger('click');
-		findCustomerId(data);
-		$('#steparrow-description-info-tab').text('Edit Customer');
-		$("#tabName").text('Edit Customer');
+		findAgentId(data);
+		$('#steparrow-description-info-tab').text('Edit Agent');
+		$("#tabName").text('Edit Agent');
 		$("#code").focus();
 	};
 
-	var deleteCustomer = function(data) {
-		deleteByCustomerId(data.id);
-		$('#customerTable tbody tr#' + data.id).remove();
+	var deleteAgent = function(data) {
+		deleteByAgentId(data.id);
+		$('#agentTable tbody tr#' + data.id).remove();
 	};
 
 	$("#globalFilter").keyup(function() {
-		customerTables.search($(this).val()).draw();
+		agentTables.search($(this).val()).draw();
 	});
 
 }

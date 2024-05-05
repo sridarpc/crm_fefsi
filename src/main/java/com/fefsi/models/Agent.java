@@ -12,25 +12,26 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Contact extends UserAudit {
+public class Agent extends UserAudit {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private Long agentId;
 
-    private String commonId;
+    private String agentName;
 
-    private String mobileNo;
+    private String contactNo;
 
-    private String emailId;
+    private int age;
 
-    private String website;
+    private String dateofBirth;
 
-    private Integer stdcode;
+    private String bloodGroup;
 
-    private String landlineNo;
+    private String address;
 
-    private Long birthday;
+    private String memberType;
 
-    private Long anniversary;
+    private String agentImage;
+   
 }
