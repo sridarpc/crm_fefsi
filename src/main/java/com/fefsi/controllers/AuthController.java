@@ -54,49 +54,34 @@ public class AuthController {
         return ResponseEntity.ok(new Response(HttpStatus.OK.value(), "", ""));
     }
 
-    @GetMapping("/user")
+    @GetMapping("/welcome")
     public String user(Model model) {
-        return "user";
-    }
-
-    @GetMapping("/license")
-    public String license(Model model) {
-        return "license";
-    }
-
-    @GetMapping("/customer")
-    public String customer(Model model) {
-        return "customer";
-    }
-
-    @GetMapping("/loan")
-    public String loan(Model model) {
-        return "loan";
+        return "welcome";
     }
     
-    @GetMapping("/itemrenewal")
-    public String renewal(Model model) {
-        return "itemrenewal";
+    @GetMapping("/home")
+    public String user(Model model) {
+        return "home";
     }
     
-    @GetMapping("/itemrelease")
+    @GetMapping("/agent")
     public String release(Model model) {
-        return "itemrelease";
+        return "agent";
     }
     
-    @GetMapping("/pawnmaster")
+    @GetMapping("/company")
     public String pawnmaster(Model model) {
-        return "pawnmaster";
+        return "company";
     }
     
-    @GetMapping("/billing")
+    @GetMapping("/movie")
     public String billing(Model model) {
-        return "billing";
+        return "movie";
     }
     
-    @GetMapping("/Reports")
+    @GetMapping("/payconfig")
     public String reports(Model model) {
-        return "reports";
+        return "payconfig";
     }
        
 }
