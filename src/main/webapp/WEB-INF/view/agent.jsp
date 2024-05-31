@@ -2,13 +2,13 @@
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 <head>
 <meta charset="utf-8" />
-<title>Ingot | User</title>
+<title>FEFSI | Agent</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta content="Ingot & User" name="description" />
-<meta content="Ingot" name="author" />
+<meta content="FEFSI & Agent" name="description" />
+<meta content="FEFSI" name="author" />
 <!-- Left Sidebar End -->
 <jsp:include page="cssWrapper.jsp" />
-<link rel="stylesheet" type="text/css" href="crm_fefsi/src/main/webapp/resources/assets/css/custom.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/assets/css/custom.css">
 </head>
 <body>
 	<!-- Begin page -->
@@ -50,7 +50,7 @@
 													<div class="card-body">
 														<div class="row mt-1">
 															<div class="col">
-																<a class="col-form-label-sm" for="agentId">Agent No.</a>
+																<a class="col-form-label-sm blackText" for="agentId">Agent No.</a>
 																<input type="number" id="agentId" name="agentId" placeholder="Enter Agent No." class="form-control form-control-sm" required>
 																<div class="invalid-feedback">
 																	Please enter your agent no.
@@ -60,17 +60,17 @@
 																<div class="invalid-feedback">
 																	Please enter agent name.
 																</div>
-																<a class="col-form-label-sm" for="agentContact">Contact Number</a>
+																<a class="col-form-label-sm blackText" for="agentContact">Contact Number</a>
 																<input type="number" id="agentContact" name="agentContact" placeholder="Enter Agent Phone Number" class="form-control form-control-sm" required>
 																<div class="invalid-feedback">
 																	Please enter valid phone number.
 																</div>
-																<a class="col-form-label-sm" for="agentAge">Age</a>
+																<a class="col-form-label-sm blackText" for="agentAge">Age</a>
 																<input type="number" id="agentAge" name="agentAge" placeholder="Enter Age" class="form-control form-control-sm" required>
 																<div class="invalid-feedback">
 																	Please enter age.
 																</div>
-																<a class="col-form-label-sm" for="agentDob">Date Of Birth</a>
+																<a class="col-form-label-sm blackText" for="agentDob">Date Of Birth</a>
 																<input type="date" id="agentDob" name="agentDob" class="form-control form-control-sm" required>
 																<div class="invalid-feedback">
 																	Please select a date.
@@ -85,7 +85,7 @@
 													<div class="card-body">
 														<div class="row mt-1">
 															<div class="col">															
-																<a class="col-form-label-sm">Agent Image</a>
+																<a class="col-form-label-sm blackText">Agent Image</a>
 																<div class="row">																
 																	<div class="col-md-6 my-2">																		
 																		<input class="form-control-sm" type="file" required>
@@ -108,17 +108,17 @@
 													<div class="card-body">
 														<div class="row mt-1">
 															<div class="col">
-																<a class="col-form-label-sm" for="agentAddress">Address</a>															
+																<a class="col-form-label-sm blackText" for="agentAddress">Address</a>															
 																<textarea class="form-control" id="agentAddress" name="agentAddress" rows="3" required></textarea>
 																<div class="invalid-feedback">
 																	Please enter address.
 																</div>
-																<a class="col-form-label-sm" for="memberType">Member Type</a>
+																<a class="col-form-label-sm blackText" for="memberType">Member Type</a>
 																<input type="text" id="memberType" name="memberType" class="form-control form-control-sm" required>
 																<div class="invalid-feedback">
 																	Please select member type.
 																</div>													
-																<a class="col-form-label-sm" for="agentStatus">Status</a>
+																<a class="col-form-label-sm blackText" for="agentStatus">Status</a>
 																<select id="agentStatus" name="agentStatus" class="form-control form-control-sm" required>
 																	<option value="">Select Status</option>
 																	<option value="">Active</option>
