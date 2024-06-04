@@ -12,10 +12,8 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
 import com.fefsi.models.Company;
-import com.fefsi.models.CommonRequest;
 import com.fefsi.models.PageRequest;
 import com.fefsi.repository.CompanyRepository;
-import com.fefsi.util.ProductUtil;
 
 @Repository
 public class CompanyRepositoryImpl implements CompanyRepository {
@@ -76,7 +74,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
                     company.setId(rs.getInt("id"));
                     company.setName(rs.getString("name"));
                     company.setAddress(rs.getString("address"));
-                    company.setStatus(rs.getString("status"));                  
+                    company.setStatus(rs.getString("status"));
                     companyList.add(company);
                 }
                 return companyList;
@@ -86,7 +84,7 @@ public class CompanyRepositoryImpl implements CompanyRepository {
 
     @Override
     public List<Company> findByList() {
-        String sql = "SELECT id, name FROM company_master where status='1'";
+        String sql = "SELECT id, name,address,status FROM company_master where status='1'";
         return jdbcTemplate.query(sql, new ResultSetExtractor<List<Company>>() {
             @Override
             public List<Company> extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -95,14 +93,14 @@ public class CompanyRepositoryImpl implements CompanyRepository {
                     Company company = new Company();
                     company.setId(rs.getInt("id"));
                     company.setName(rs.getString("name"));
+                    company.setAddress(rs.getString("address"));
+                    company.setStatus(rs.getString("status"));
                     companyList.add(company);
                 }
                 return companyList;
             }
         });
     }
-
-    
 
     public boolean saveOrUpdate(int id) {
         String sql = "SELECT cust_id FROM company_master where cust_id ='" + id + "'";
@@ -111,4 +109,3 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     }
 
 }
-	

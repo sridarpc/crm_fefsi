@@ -12,16 +12,26 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Payconfig extends UserAudit {
+public class Movie extends UserAudit {
 
     private static final long serialVersionUID = 1L;
 
-    private int id;
-    
-    private String type;
+    private Long agentId;
 
-    private String category;
-    
-    private double amount;
+    private String agentName;
+
+    private String contactNo;
+
+    private int age;
+
+    private String dateofBirth;
+
+    private String bloodGroup;
+
+    private String address;
+
+    private String memberType;
+
+    private String agentImage;
    
 }

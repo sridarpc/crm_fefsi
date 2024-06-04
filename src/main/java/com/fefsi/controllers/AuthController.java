@@ -53,11 +53,6 @@ public class AuthController {
     public ResponseEntity<?> logoutUser(@Valid @RequestBody LogOutRequest logOutRequest) {
         return ResponseEntity.ok(new Response(HttpStatus.OK.value(), "", ""));
     }
-
-    @GetMapping("/welcome")
-    public String user(Model model) {
-        return "welcome";
-    }
     
     @GetMapping("/home")
     public String user(Model model) {

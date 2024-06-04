@@ -5,7 +5,7 @@ import java.util.List;
 import com.fefsi.models.Agent;
 import com.fefsi.models.PageRequest;
 
-public interface AgentRepository {
+public interface MovieRepository {
 
     int saveOrUpdateAgent(Agent agent);
 

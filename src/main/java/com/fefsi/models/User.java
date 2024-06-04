@@ -1,8 +1,5 @@
 package com.fefsi.models;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -19,17 +16,13 @@ public class User extends UserAudit {
 
     private Long id;
 
-    @NotBlank
-    @Size(max = 20)
+    @NotBlank @Size(max = 20)
     private String loginId;
 
-    @NotBlank
-    @Size(max = 50)
+    @NotBlank @Size(max = 50)
     private String password;
 
     private String designationId;
-
-    private Set<Roles> roles = new HashSet<>();
 
     public User() {
     }

@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class AgentService {
+public class MovieService {
 
     @Autowired
     private AgentRepository agentRepository;

@@ -17,7 +17,7 @@ import com.fefsi.repository.AgentRepository;
 import com.fefsi.util.ProductUtil;
 
 @Repository
-public class AgentRepositoryImpl implements AgentRepository {
+public class MovieRepositoryImpl implements AgentRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;

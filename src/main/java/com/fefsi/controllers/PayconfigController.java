@@ -17,10 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fefsi.handler.Response;
-import com.fefsi.models.CommonRequest;
 import com.fefsi.models.CustomDTO;
-import com.fefsi.models.Payconfig;
 import com.fefsi.models.PageRequest;
+import com.fefsi.models.Payconfig;
 import com.fefsi.service.PayconfigService;
 
 import lombok.extern.slf4j.Slf4j;

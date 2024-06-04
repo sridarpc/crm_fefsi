@@ -11,11 +11,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import com.fefsi.models.Payconfig;
-import com.fefsi.models.CommonRequest;
 import com.fefsi.models.PageRequest;
+import com.fefsi.models.Payconfig;
 import com.fefsi.repository.PayconfigRepository;
-import com.fefsi.util.ProductUtil;
 
 @Repository
 public class PayconfigRepositoryImpl implements PayconfigRepository {
@@ -50,7 +48,7 @@ public class PayconfigRepositoryImpl implements PayconfigRepository {
                     payconfig.setId(rs.getInt("id"));
                     payconfig.setType(rs.getString("type"));
                     payconfig.setCategory(rs.getString("category"));
-                    payconfig.setAmount(rs.getString("amount"));
+                    payconfig.setAmount(rs.getDouble("amount"));
                 }
                 return payconfig;
             }
@@ -76,7 +74,7 @@ public class PayconfigRepositoryImpl implements PayconfigRepository {
                     payconfig.setId(rs.getInt("id"));
                     payconfig.setType(rs.getString("type"));
                     payconfig.setCategory(rs.getString("category"));
-                    payconfig.setAmount(rs.getString("amount"));                 
+                    payconfig.setAmount(rs.getDouble("amount"));
                     payconfigList.add(payconfig);
                 }
                 return payconfigList;
@@ -86,7 +84,7 @@ public class PayconfigRepositoryImpl implements PayconfigRepository {
 
     @Override
     public List<Payconfig> findByList() {
-        String sql = "SELECT id, name FROM payconfig_master where status='1'";
+        String sql = "SELECT type, category, amount FROM payconfig_master where status='1'";
         return jdbcTemplate.query(sql, new ResultSetExtractor<List<Payconfig>>() {
             @Override
             public List<Payconfig> extractData(ResultSet rs) throws SQLException, DataAccessException {
@@ -94,15 +92,15 @@ public class PayconfigRepositoryImpl implements PayconfigRepository {
                 while (rs.next()) {
                     Payconfig payconfig = new Payconfig();
                     payconfig.setId(rs.getInt("id"));
-                    payconfig.setName(rs.getString("name"));
+                    payconfig.setType(rs.getString("type"));
+                    payconfig.setCategory(rs.getString("category"));
+                    payconfig.setAmount(rs.getDouble("amount"));
                     payconfigList.add(payconfig);
                 }
                 return payconfigList;
             }
         });
     }
-
-    
 
     public boolean saveOrUpdate(int id) {
         String sql = "SELECT cust_id FROM payconfig_master where cust_id ='" + id + "'";
@@ -111,4 +109,3 @@ public class PayconfigRepositoryImpl implements PayconfigRepository {
     }
 
 }
-	
