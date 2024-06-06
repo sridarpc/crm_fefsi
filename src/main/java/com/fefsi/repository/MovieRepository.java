@@ -2,22 +2,22 @@ package com.fefsi.repository;
 
 import java.util.List;
 
-import com.fefsi.models.Agent;
+import com.fefsi.models.Movie;
 import com.fefsi.models.PageRequest;
 
 public interface MovieRepository {
 
-    int saveOrUpdateAgent(Agent agent);
+    int saveOrUpdateMovie(Movie movie);
 
-    int deleteAgent(int id);
+    int deleteMovie(int id);
 
-    Agent findAgentById(int id);
+    Movie findMovieById(int id);
 
-    List<Agent> findAll(PageRequest pageable);
+    List<Movie> findAll(PageRequest pageable);
 
     int count();
 
-    List<Agent> findByList();
+    List<Movie> findByList();
 
 
 }

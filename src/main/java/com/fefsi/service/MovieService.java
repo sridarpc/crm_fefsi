@@ -7,10 +7,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.fefsi.exception.ProductBusinessException;
-import com.fefsi.models.Agent;
+import com.fefsi.models.Movie;
 import com.fefsi.models.CustomDTO;
 import com.fefsi.models.PageRequest;
-import com.fefsi.repository.AgentRepository;
+import com.fefsi.repository.MovieRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,38 +19,38 @@ import lombok.extern.slf4j.Slf4j;
 public class MovieService {
 
     @Autowired
-    private AgentRepository agentRepository;
+    private MovieRepository movieRepository;
 
-    public int saveOrUpdate(Agent agent) {
+    public int saveOrUpdate(Movie movie) {
         int status = 0;
         try {
             log.info("Inside save");
-            status = agentRepository.saveOrUpdateAgent(agent);
+            status = movieRepository.saveOrUpdateMovie(movie);
         } catch (DataIntegrityViolationException e) {
-            throw new ProductBusinessException("Agent code already exist " + e.getMessage());
+            throw new ProductBusinessException("Movie code already exist " + e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
-            throw new ProductBusinessException("Exception occurred while save Or Update the Agent");
+            throw new ProductBusinessException("Exception occurred while save Or Update the Movie");
         }
         return status;
     }
 
-    public Agent findById(int id) {
-        Agent customer = agentRepository.findAgentById(id);
+    public Movie findById(int id) {
+        Movie customer = movieRepository.findMovieById(id);
         return customer;
     }
 
     public int deleteById(int id) {
-        return agentRepository.deleteAgent(id);
+        return movieRepository.deleteMovie(id);
     }
 
-    public CustomDTO<Agent> findAll(PageRequest pageable) {
+    public CustomDTO<Movie> findAll(PageRequest pageable) {
         try {
-            List<Agent> Agent = agentRepository.findAll(pageable);
-            CustomDTO<Agent> customDTO = new CustomDTO<>();
-            customDTO.setData(Agent);
-            customDTO.setRecordsFiltered(agentRepository.count());
-            customDTO.setRecordsTotal(Agent.size());
+            List<Movie> Movie = movieRepository.findAll(pageable);
+            CustomDTO<Movie> customDTO = new CustomDTO<>();
+            customDTO.setData(Movie);
+            customDTO.setRecordsFiltered(movieRepository.count());
+            customDTO.setRecordsTotal(Movie.size());
             customDTO.setDraw(pageable.getDraw());
             return customDTO;
         } catch (Exception e) {
@@ -58,9 +58,9 @@ public class MovieService {
         }
     }
 
-    public List<Agent> findByList() {
+    public List<Movie> findByList() {
         try {
-            return agentRepository.findByList();
+            return movieRepository.findByList();
         } catch (Exception e) {
             throw new ProductBusinessException("findByList Getting Exception" + e.getMessage());
         }

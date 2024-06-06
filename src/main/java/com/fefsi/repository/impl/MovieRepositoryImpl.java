@@ -11,118 +11,161 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
 
-import com.fefsi.models.Agent;
+import com.fefsi.models.Movie;
 import com.fefsi.models.PageRequest;
-import com.fefsi.repository.AgentRepository;
+import com.fefsi.repository.MovieRepository;
 import com.fefsi.util.ProductUtil;
 
 @Repository
-public class MovieRepositoryImpl implements AgentRepository {
+public class MovieRepositoryImpl implements MovieRepository {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @Override
-    public int saveOrUpdateAgent(Agent agent) throws DataAccessException {
-        if (saveOrUpdate(agent.getAgentId())) {
-            return jdbcTemplate.update("UPDATE agent_master SET agent_name =?, contact_no =?, age =?, dateofbirth =?, blood_group =?, address =?, member_type =?, agent_image =?, status =?, mod_by =?, mod_date = NOW() WHERE agent_id =?", new Object[] { agent.getAgentName(), agent.getContactNo(), agent.getAge(), agent.getDateofBirth(), agent.getBloodGroup(), agent.getAddress(), agent.getMemberType(), agent.getAgentImage(), agent.getStatus(), agent.getModBy() });
+    public int saveOrUpdateMovie(Movie movie) throws DataAccessException {
+        if (saveOrUpdate(movie.getMovieId())) {
+            return jdbcTemplate.update("UPDATE movie_master SET id =?, company_name =?, movie_name =?, agent_name =?, agentcontact_no =?, manager_name =?, managercontact_no =?, junior_artist =?, gym_boys =?, rich_model =?, location =?, conveyance =?, tiffin =?, meals =?, untime_conveyance =?, midnight_snacks =?, journey_conveyance =?, models_rich_conveyance =?, agents_assistant_batta =?, sub_agent_name =?, others =?, total_amount =?, amount_status =?, image_movie =?, status =?, mod_by =?, mod_date = NOW() WHERE id =?", new Object[] { movie.getMovieId(), movie.getCompanyName(), movie.getMovieName(), movie.getAgentName(), movie.getAgentContactNo(),movie.getManagerName(), movie.getManagerContactNo(), movie.getJuniorArtist(), movie.getGymBoys(), movie.getRichModel(), movie.getLocation(), movie.getConveyance(), movie.getTiffin(), movie.getMeals(), movie.getUntimeConveyance(), movie.getMidnightSnacks(), movie.getJourneyConveyance(), movie.getModelsrichConveyance(), movie.getAgentsassistantBatta(), movie.getSubagentName(), movie.getOthers(), movie.getTotalAmount(), movie.getAmountStatus(), movie.getImageMovie(), movie.getStatus(), movie.getModBy() });
         } else {
-            return jdbcTemplate.update("INSERT INTO agent_master (agent_id, agent_name, contact_no, age, dateofbirth, blood_group, address, member_type, agent_image, status, ent_by, ent_date ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() );", new Object[] { agent.getAgentId(), agent.getAgentName(), agent.getContactNo(), agent.getAge(), agent.getDateofBirth(), agent.getBloodGroup(), agent.getAddress(), agent.getMemberType(), agent.getAgentImage(), agent.getStatus(), ProductUtil.getInstance().getUserId() });
+            return jdbcTemplate.update("INSERT INTO movie_master (id, company_name, movie_name, agent_name, agentcontact_no, manager_name, managercontact_no, junior_artist, gym_boys, rich_model, location, conveyance, tiffin, meals, untime_conveyance, midnight_snacks, journey_conveyance, models_rich_conveyance, agents_assistant_batta, sub_agent_name, others, total_amount, amount_status, image_movie, status, mod_by, mod_date ) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW() );", new Object[] { movie.getMovieId(), movie.getCompanyName(), movie.getMovieName(), movie.getAgentName(), movie.getAgentContactNo(),movie.getManagerName(), movie.getManagerContactNo(), movie.getJuniorArtist(), movie.getGymBoys(), movie.getRichModel(), movie.getLocation(), movie.getConveyance(), movie.getTiffin(), movie.getMeals(), movie.getUntimeConveyance(), movie.getMidnightSnacks(), movie.getJourneyConveyance(), movie.getModelsrichConveyance(), movie.getAgentsassistantBatta(), movie.getSubagentName(), movie.getOthers(), movie.getTotalAmount(), movie.getAmountStatus(), movie.getImageMovie(), movie.getStatus(), ProductUtil.getInstance().getUserId() });
         }
     }
 
     @Override
-    public int deleteAgent(int agentId) {
-        return jdbcTemplate.update("DELETE FROM agent_master WHERE agent_id=?", new Object[] { agentId });
+    public int deleteMovie(int movieId) {
+        return jdbcTemplate.update("DELETE FROM movie_master WHERE id=?", new Object[] { movieId });
     }
 
     @Override
-    public Agent findAgentById(int id) {
-        String sql = "SELECT agent_id, agent_name, contact_no, age, dateofbirth, blood_group, address, member_type, agent_image, status, ent_by, ent_date FROM agent_master WHERE agent_id='" + id + "'";
-        return jdbcTemplate.query(sql, new ResultSetExtractor<Agent>() {
+    public Movie findMovieById(int id) {
+        String sql = "SELECT id, company_name, movie_name, agent_name, agentcontact_no, manager_name, managercontact_no, junior_artist, gym_boys, rich_model, location, conveyance, tiffin, meals, untime_conveyance, midnight_snacks, journey_conveyance, models_rich_conveyance, agents_assistant_batta, sub_agent_name, others, total_amount, amount_status, image_movie, status, ent_by, ent_date FROM movie_master WHERE id='" + id + "'";
+        return jdbcTemplate.query(sql, new ResultSetExtractor<Movie>() {
             @Override
-            public Agent extractData(ResultSet rs) throws SQLException, DataAccessException {
-                Agent agent = new Agent();
+            public Movie extractData(ResultSet rs) throws SQLException, DataAccessException {
+                Movie movie = new Movie();
                 int i = 1;
                 while (rs.next()) {
-                    agent.setSerialNumber(i++);
-                    agent.setAgentId(rs.getLong("cust_id"));
-                    agent.setAgentName(rs.getString("agentname"));
-                    agent.setContactNo(rs.getString("contactno"));
-                    agent.setAge(rs.getInt("age"));
-                    agent.setDateofBirth(rs.getString("dateofbirth"));
-                    agent.setBloodGroup(rs.getString("bloodgroup"));
-                    agent.setAddress(rs.getString("address"));
-                    agent.setMemberType(rs.getString("membertype"));
-                    agent.setAgentImage(rs.getString("agentimage"));
-                    agent.setStatus(rs.getString("status"));
+                    movie.setSerialNumber(i++);
+                    movie.setMovieId(rs.getLong("id"));
+                    movie.setCompanyName(rs.getString("companyname"));
+                    movie.setMovieName(rs.getString("moviename"));
+                    movie.setAgentName(rs.getString("agentname"));
+                    movie.setAgentContactNo(rs.getString("agentcontact"));
+                    movie.setManagerName(rs.getString("managername"));
+                    movie.setManagerContactNo(rs.getString("managercontactno"));
+                    movie.setJuniorArtist(rs.getString("juniorartist"));
+                    movie.setGymBoys(rs.getString("gymboys"));
+                    movie.setRichModel(rs.getString("richmodel"));
+                    movie.setLocation(rs.getString("location"));
+                    movie.setConveyance(rs.getString("conveyance"));
+                    movie.setTiffin(rs.getString("tiffin"));
+                    movie.setMeals(rs.getString("meals"));
+                    movie.setUntimeConveyance(rs.getString("untimeconveyance"));
+                    movie.setMidnightSnacks(rs.getString("midnightsnacks"));
+                    movie.setJourneyConveyance(rs.getString("journeyconveyance"));
+                    movie.setModelsrichConveyance(rs.getString("modelsrichconveyance"));
+                    movie.setAgentsassistantBatta(rs.getString("agentassistantbatta"));
+                    movie.setSubagentName(rs.getString("subagentname"));
+                    movie.setOthers(rs.getString("others"));
+                    movie.setTotalAmount(rs.getString("totalamount"));
+                    movie.setAmountStatus(rs.getString("amountstatus"));
+                    movie.setImageMovie(rs.getString("imagemovie"));                    
+                    movie.setStatus(rs.getString("status"));
                 }
-                return agent;
+                return movie;
             }
         });
     }
 
     @Override
     public int count() {
-        return jdbcTemplate.queryForObject("SELECT count(*) FROM agent_master", Integer.class);
+        return jdbcTemplate.queryForObject("SELECT count(*) FROM movie_master", Integer.class);
     }
 
     @Override
-    public List<Agent> findAll(PageRequest page) {
-        String sql = "SELECT * FROM agent_master where (UPPER(cust_id) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(status) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(cust_name) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(cust_type) like '%" + page.getSearch().toUpperCase() + "%') ORDER BY cust_id " + page.getSort() + " LIMIT " + page.getSize() + " OFFSET " + page.getPage();
-        return jdbcTemplate.query(sql, new ResultSetExtractor<List<Agent>>() {
+    public List<Movie> findAll(PageRequest page) {
+        String sql = "SELECT * FROM movie_master where (UPPER(cust_id) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(status) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(cust_name) like '%" + page.getSearch().toUpperCase() + "%' or UPPER(cust_type) like '%" + page.getSearch().toUpperCase() + "%') ORDER BY cust_id " + page.getSort() + " LIMIT " + page.getSize() + " OFFSET " + page.getPage();
+        return jdbcTemplate.query(sql, new ResultSetExtractor<List<Movie>>() {
             @Override
-            public List<Agent> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<Agent> agentList = new ArrayList<>();
+            public List<Movie> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                List<Movie> movieList = new ArrayList<>();
                 int i = (page.getPage() / page.getSize()) * page.getSize() + 1;
                 while (rs.next()) {
-                    Agent agent = new Agent();
-                    agent.setSerialNumber(i++);
-                    agent.setAgentId(rs.getLong("cust_id"));
-                    agent.setAgentName(rs.getString("agentname"));
-                    agent.setContactNo(rs.getString("contactno"));
-                    agent.setAge(rs.getInt("age"));
-                    agent.setDateofBirth(rs.getString("dateofbirth"));
-                    agent.setBloodGroup(rs.getString("bloodgroup"));
-                    agent.setAddress(rs.getString("address"));
-                    agent.setMemberType(rs.getString("membertype"));
-                    agent.setAgentImage(rs.getString("agentimage"));
-                    agent.setStatus(rs.getString("status"));
-                    agentList.add(agent);
+                    Movie movie = new Movie();
+                    movie.setMovieId(rs.getLong("id"));
+                    movie.setCompanyName(rs.getString("companyname"));
+                    movie.setMovieName(rs.getString("moviename"));
+                    movie.setAgentName(rs.getString("agentname"));
+                    movie.setAgentContactNo(rs.getString("agentcontact"));
+                    movie.setManagerName(rs.getString("managername"));
+                    movie.setManagerContactNo(rs.getString("managercontactno"));
+                    movie.setJuniorArtist(rs.getString("juniorartist"));
+                    movie.setGymBoys(rs.getString("gymboys"));
+                    movie.setRichModel(rs.getString("richmodel"));
+                    movie.setLocation(rs.getString("location"));
+                    movie.setConveyance(rs.getString("conveyance"));
+                    movie.setTiffin(rs.getString("tiffin"));
+                    movie.setMeals(rs.getString("meals"));
+                    movie.setUntimeConveyance(rs.getString("untimeconveyance"));
+                    movie.setMidnightSnacks(rs.getString("midnightsnacks"));
+                    movie.setJourneyConveyance(rs.getString("journeyconveyance"));
+                    movie.setModelsrichConveyance(rs.getString("modelsrichconveyance"));
+                    movie.setAgentassistantBatta(rs.getString("agentassistantbatta"));
+                    movie.setSubagentName(rs.getString("subagentname"));
+                    movie.setOthers(rs.getString("others"));
+                    movie.setTotalAmount(rs.getString("totalamount"));
+                    movie.setAmountStatus(rs.getString("amountstatus"));
+                    movie.setImageMovie(rs.getString("imagemovie"));                    
+                    movie.setStatus(rs.getString("status"));
                 }
-                return agentList;
+                return movieList;
             }
         });
     }
 
     @Override
-    public List<Agent> findByList() {
-        String sql = "SELECT agent_id, agent_name, contact_no, age, dateofbirth, blood_group, address, member_type, agent_image, status, ent_by, ent_date, mod_date, mod_by FROM agent_master where status='1'";
-        return jdbcTemplate.query(sql, new ResultSetExtractor<List<Agent>>() {
+    public List<Movie> findByList() {
+        String sql = "SELECT id, company_name, movie_name, agent_name, agentcontact_no, manager_name, managercontact_no, junior_artist, gym_boys, rich_model, location, conveyance, tiffin, meals, untime_conveyance, midnight_snacks, journey_conveyance, models_rich_conveyance, agents_assistant_batta, sub_agent_name, others, total_amount, amount_status, image_movie, status, ent_by, ent_date, mod_date, mod_by FROM movie_master where status='1'";
+        return jdbcTemplate.query(sql, new ResultSetExtractor<List<Movie>>() {
             @Override
-            public List<Agent> extractData(ResultSet rs) throws SQLException, DataAccessException {
-                List<Agent> agentList = new ArrayList<>();
+            public List<Movie> extractData(ResultSet rs) throws SQLException, DataAccessException {
+                List<Movie> movieList = new ArrayList<>();
                 while (rs.next()) {
-                    Agent agent = new Agent();
-                    agent.setAgentId(rs.getLong("cust_id"));
-                    agent.setAgentName(rs.getString("agentname"));
-                    agent.setContactNo(rs.getString("contactno"));
-                    agent.setAge(rs.getInt("age"));
-                    agent.setDateofBirth(rs.getString("dateofbirth"));
-                    agent.setBloodGroup(rs.getString("bloodgroup"));
-                    agent.setAddress(rs.getString("address"));
-                    agent.setMemberType(rs.getString("membertype"));
-                    agent.setAgentImage(rs.getString("agentimage"));
-                    agent.setStatus(rs.getString("status"));
-                    agentList.add(agent);
+                    Movie movie = new Movie();
+                    movie.setMovieId(rs.getLong("id"));
+                    movie.setCompanyName(rs.getString("companyname"));
+                    movie.setMovieName(rs.getString("moviename"));
+                    movie.setAgentName(rs.getString("agentname"));
+                    movie.setAgentContactNo(rs.getString("agentcontact"));
+                    movie.setManagerName(rs.getString("managername"));
+                    movie.setManagerContactNo(rs.getString("managercontactno"));
+                    movie.setJuniorArtist(rs.getString("juniorartist"));
+                    movie.setGymBoys(rs.getString("gymboys"));
+                    movie.setRichModel(rs.getString("richmodel"));
+                    movie.setLocation(rs.getString("location"));
+                    movie.setConveyance(rs.getString("conveyance"));
+                    movie.setTiffin(rs.getString("tiffin"));
+                    movie.setMeals(rs.getString("meals"));
+                    movie.setUntimeConveyance(rs.getString("untimeconveyance"));
+                    movie.setMidnightSnacks(rs.getString("midnightsnacks"));
+                    movie.setJourneyConveyance(rs.getString("journeyconveyance"));
+                    movie.setModelsrichConveyance(rs.getString("modelsrichconveyance"));
+                    movie.setAgentsassistantBatta(rs.getString("agentassistantbatta"));
+                    movie.setSubagentName(rs.getString("subagentname"));
+                    movie.setOthers(rs.getString("others"));
+                    movie.setTotalAmount(rs.getString("totalamount"));
+                    movie.setAmountStatus(rs.getString("amountstatus"));
+                    movie.setImageMovie(rs.getString("imagemovie"));                    
+                    movie.setStatus(rs.getString("status"));
+                    movieList.add(movie);
                 }
-                return agentList;
+                return movieList;
             }
         });
     }
 
     public boolean saveOrUpdate(Long id) {
-        String sql = "SELECT cust_id FROM agent_master where cust_id ='" + id + "'";
+        String sql = "SELECT cust_id FROM movie_master where cust_id ='" + id + "'";
         int count = jdbcTemplate.queryForObject(sql, Integer.class);
         return count > 0;
     }

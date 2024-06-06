@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fefsi.handler.Response;
-import com.fefsi.models.Company;
+import com.fefsi.models.Movie;
 import com.fefsi.models.CustomDTO;
 import com.fefsi.models.PageRequest;
-import com.fefsi.service.CompanyService;
+import com.fefsi.service.MovieService;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,21 +30,21 @@ import lombok.extern.slf4j.Slf4j;
 public class MovieController {
 
     @Autowired
-    CompanyService companyService;
+    MovieService movieService;
 
     @Autowired(required = true)
     PageRequest pageRequest;
 
     @PostMapping("/saveOrUpdate")
-    public ResponseEntity<Response> saveOrUpdate(@Valid @RequestBody Company company) {
+    public ResponseEntity<Response> saveOrUpdate(@Valid @RequestBody Movie movie) {
         log.info("Inside saveOrUpdate");
-        int status = companyService.saveOrUpdate(company);
+        int status = movieService.saveOrUpdate(movie);
         log.info("Outside saveOrUpdate", status);
-        return ResponseEntity.ok(new Response(HttpStatus.CREATED.value(), company, String.valueOf(status)));
+        return ResponseEntity.ok(new Response(HttpStatus.CREATED.value(), movie, String.valueOf(status)));
     }
 
     @GetMapping("/findAll")
-    public CustomDTO<Company> findAll(@RequestParam("start") int start, @RequestParam("length") int length, @RequestParam("order[0][dir]") String order, @RequestParam("draw") int draw, @RequestParam("order[0][column]") int sortColIndex, @RequestParam("columns[0][data]") String colDataAttrName, @RequestParam("search[value]") String search) {
+    public CustomDTO<Movie> findAll(@RequestParam("start") int start, @RequestParam("length") int length, @RequestParam("order[0][dir]") String order, @RequestParam("draw") int draw, @RequestParam("order[0][column]") int sortColIndex, @RequestParam("columns[0][data]") String colDataAttrName, @RequestParam("search[value]") String search) {
         log.info("Inside findAll");
         log.info("Param start:" + start + " length :" + length + " draw:" + draw + " sortColIndex:" + sortColIndex + " order:" + order + " colDataAttrName:" + colDataAttrName);
         pageRequest.setPage(start);
@@ -54,7 +54,7 @@ public class MovieController {
         pageRequest.setSortColIndex(sortColIndex);
         pageRequest.setColName(colDataAttrName);
         pageRequest.setSearch(search);
-        CustomDTO<Company> customDTO = companyService.findAll(pageRequest);
+        CustomDTO<Movie> customDTO = movieService.findAll(pageRequest);
         log.info("Outside findAll");
         return customDTO;
     }
@@ -62,25 +62,25 @@ public class MovieController {
     @GetMapping("/{id}")
     public ResponseEntity<Response> findById(@PathVariable int id) {
         log.info("Inside findById");
-        Company Company = companyService.findById(id);
+        Movie Movie = movieService.findById(id);
         log.info("Outside findById");
-        return ResponseEntity.ok(new Response(HttpStatus.OK.value(), Company, ""));
+        return ResponseEntity.ok(new Response(HttpStatus.OK.value(), Movie, ""));
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Response> deleteById(@PathVariable int id) {
         log.info("Inside deleteById");
-        int status = companyService.deleteById(id);
+        int status = movieService.deleteById(id);
         log.info("Outside deleteById");
         return ResponseEntity.ok(new Response(HttpStatus.OK.value(), "", String.valueOf(status)));
     }
 
-    @GetMapping("/getCompanyList")
-    public ResponseEntity<?> companyList() {
-        log.info("Inside companyList");
-        List<Company> companyList = companyService.findByList();
-        log.info("Outside companyList");
-        return ResponseEntity.ok(new Response(HttpStatus.OK.value(), companyList, ""));
+    @GetMapping("/getMovieList")
+    public ResponseEntity<?> movieList() {
+        log.info("Inside movieList");
+        List<Movie> movieList = movieService.findByList();
+        log.info("Outside movieList");
+        return ResponseEntity.ok(new Response(HttpStatus.OK.value(), movieList, ""));
     }
        
 }

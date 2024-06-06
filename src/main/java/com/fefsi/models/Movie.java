@@ -16,22 +16,52 @@ public class Movie extends UserAudit {
 
     private static final long serialVersionUID = 1L;
 
-    private Long agentId;
+    private Long movieId;
 
+    private String companyName;
+
+    private String movieName;
+    
     private String agentName;
-
-    private String contactNo;
-
-    private int age;
-
-    private String dateofBirth;
-
-    private String bloodGroup;
-
-    private String address;
-
-    private String memberType;
-
-    private String agentImage;
-   
+    
+    private String agentContactNo;
+    
+    private String managerName;
+    
+    private String managerContactNo;
+    
+    private String juniorArtist;
+    
+    private String gymBoys;
+    
+    private String richModel;
+    
+    private String location;
+    
+    private String conveyance;
+    
+    private String tiffin;
+    
+    private String meals;
+    
+    private String untimeConveyance;
+    
+    private String midnightSnacks;
+    
+    private String journeyConveyance;
+    
+    private String modelsrichConveyance;
+    
+    private String agentsassistantBatta;
+    
+    private String subagentName;
+    
+    private String others;
+    
+    private String totalAmount;
+    
+    private String amountStatus;
+    
+    private String imageMovie;  
+  
 }
