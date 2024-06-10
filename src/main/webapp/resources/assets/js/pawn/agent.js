@@ -15,11 +15,11 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#save").click(function() {
+	$("#saveAgent").click(function() {
 		addAgent();
 	});
 
-	$("#clearAgent").click(function() {
+	$("#resetAgent").click(function() {
 		resetAgent();
 	});
 
@@ -30,7 +30,7 @@ $(document).ready(function() {
 				resetAgent();
 				break;
 			case 113:
-				$('#save').trigger('click');
+				$('#saveAgent').trigger('click');
 				break;
 		}
 	});
@@ -43,7 +43,7 @@ $(document).ready(function() {
 
 
 function addAgent() {
-	var agentForm = $("#addAgent");
+	var agentForm = $("#addAgentForm");
 	var isValid = true;
 	agentForm.find(':input').each(function() {
 		if (!this.checkValidity()) {
@@ -56,47 +56,13 @@ function addAgent() {
 
 		agentParam["agentId"] = $('#agentId').val();
 		agentParam["agentName"] = $('#agentName').val();
-		agentParam["surDetails"] = $('#surDetails').val();
-		agentParam["surName"] = $('#surName').val();
-		agentParam["agentType"] = $('#agentType').val();
-		agentParam["party"] = $('#party').val();
-		agentParam["religion"] = $('#religion').val();
-		agentParam["community"] = $('#community').val();
-		agentParam["doorNo"] = $('#doorNo').val();
-		agentParam["streetName"] = $('#streetName').val();
-		agentParam["area"] = $('#area').val();
-		agentParam["taluk"] = $('#taluk').val();
-		agentParam["postal"] = $('#postal').val();
-		agentParam["district"] = $('#district').val();
-		agentParam["state"] = $('#state').val();
-		agentParam["pincode"] = $('#pincode').val();
-		agentParam["mobileNo"] = $('#mobileNo').val();
-		agentParam["emailId"] = $('#emailId').val();
-		agentParam["website"] = $('#website').val();
-		agentParam["stdcode"] = $('#stdcode').val();
-		agentParam["landlineNo"] = $('#landlineNo').val();
-		agentParam["birthday"] = $('#birthday').val();
-		agentParam["anniversary"] = $('#anniversary').val();
-		agentParam["proofName"] = $('#proofName').val();
-		agentParam["proofDetails"] = $('#proofDetails').val();
-		agentParam["proofAttached"] = $('#proofAttached').val();
-		agentParam["relation"] = $('#relation').val();
-		agentParam["relationshipAgentId"] = $('#relationshipAgentId').val();
-		agentParam["photo1"] = $('#photo1').val();
-		agentParam["photo2"] = $('#photo2').val();
-		agentParam["photo3"] = $('#photo3').val();
-		agentParam["rightThumb"] = $('#rightThumb').val();
-		agentParam["rightIndexFinger"] = $('#rightIndexFinger').val();
-		agentParam["rightMiddleFinger"] = $('#rightMiddleFinger').val();
-		agentParam["rightRingFinger"] = $('#rightRingFinger').val();
-		agentParam["rightLittleFinger"] = $('#rightLittleFinger').val();
-		agentParam["leftThumb"] = $('#leftThumb').val();
-		agentParam["leftIndexFinger"] = $('#leftIndexFinger').val();
-		agentParam["leftMiddleFinger"] = $('#leftMiddleFinger').val();
-		agentParam["leftRingFinger"] = $('#leftRingFinger').val();
-		agentParam["leftLittleFinger"] = $('#leftLittleFinger').val();
-		agentParam["feedback"] = $('#feedback').val();
-		agentParam["status"] = $('#agentstatus').val();
+		agentParam["agentContact"] = $('#agentContact').val();
+		agentParam["agentAge"] = $('#agentAge').val();
+		agentParam["agentDob"] = $('#agentDob').val();
+		agentParam["agentImage"] = $('#agentImage').val();
+		agentParam["agentAddress"] = $('#agentAddress').val();
+		agentParam["memberType"] = $('#memberType').val();
+		agentParam["agentStatus"] = $('#agentStatus').val();		
 
 		$.ajax({
 			type: "POST",
@@ -136,7 +102,7 @@ function getAgentId() {
 }
 
 function resetAgent() {
-	var form = $('#addAgent')[0];
+	var form = $('#addAgentForm')[0];
 	$(form).removeClass('was-validated');
 	form.reset();
 }
@@ -178,44 +144,13 @@ function agentDetails(data) {
 
 	$('#agentId').val(data.agentId);
 	$('#agentName').val(data.agentName);
-	$('#surDetails').val(data.surDetails);
-	$('#surName').val(data.surName);
-	$('#agentType').val(data.agentType);
-	$('#party').val(data.party);
-	$('#religion').val(data.religion);
-	$('#community').val(data.community);
-	$('#doorNo').val(data.doorNo);
-	$('#streetName').val(data.streetName);
-	$('#area').val(data.area);
-	$('#taluk').val(data.taluk);
-	$('#postal').val(data.postal);
-	$('#district').val(data.district);
-	$('#state').val(data.state);
-	$('#pincode').val(data.pincode);
-	$('#mobileNo').val(data.mobileNo);
-	$('#emailId').val(data.emailId);
-	$('#website').val(data.website);
-	$('#stdcode').val(data.stdcode);
-	$('#landlineNo').val(data.landlineNo);
-	$('#birthday').val(data.birthday);
-	$('#anniversary').val(data.anniversary);
-	$('#proofName').val(data.proofName);
-	$('#proofDetails').val(data.proofDetails);
-	$('#proofAttached').val(data.proofAttached);
-	$('#relation').val(data.relation);
-	$('#relationshipAgentId').val(data.relationshipAgentId);
-	$('#rightThumb').val(data.rightThumb);
-	$('#rightIndexFinger').val(data.rightIndexFinger);
-	$('#rightMiddleFinger').val(data.rightMiddleFinger);
-	$('#rightRingFinger').val(data.rightRingFinger);
-	$('#rightLittleFinger').val(data.rightLittleFinger);
-	$('#leftThumb').val(data.leftThumb);
-	$('#leftIndexFinger').val(data.leftIndexFinger);
-	$('#leftMiddleFinger').val(data.leftMiddleFinger);
-	$('#leftRingFinger').val(data.leftRingFinger);
-	$('#leftLittleFinger').val(data.leftLittleFinger);
-	$('#feedback').val(data.feedback);
-	$('#agentstatus').val(data.status);
+	$('#agentContact').val(data.agentContact);
+	$('#agentAge').val(data.agentAge);
+	$('#agentDob').val(data.agentDob);
+	$('#agentImage').val(data.agentImage);
+	$('#agentAddress').val(data.agentAddress);
+	$('#memberType').val(data.memberType);
+	$('#agentStatus').val(data.agentStatus);	
 
 }
 
@@ -239,10 +174,9 @@ function loadAgentList() {
 			{ "data": "serialNumber" },
 			{ "data": "agentId" },
 			{ "data": "agentName" },
-			{ "data": "agentType" },
-			{ "data": "mobileNo" },
-			{ "data": "postal" },
-			{ "data": "status" },
+			{ "data": "agentContact" },
+			{ "data": "agentAge" },			
+			{ "data": "agentStatus" },
 			{
 				data: null,
 				className: "dt-center editor-delete",
